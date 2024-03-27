@@ -1,1 +1,12 @@
-<p>recipe-page works!</p>
+<div *ngIf="recipes$ | async as recipes" class="recipe-list-container">
+    <div *ngFor="let recipe of recipes" class="recipe-card">
+        <h2>Recipe</h2>
+        <h3 class="recipe-label">id: {{recipe.id}} ||</h3>
+        <h3 class="recipe-label">name: {{recipe.name}}</h3>
+        <h3 class="ingredient-label">Ingredients:</h3>
+        <ng-container *ngIf="recipe.ingredients as ingredients">
+            <h4 *ngFor="let ingredient of ingredients">mat_id: {{ingredient.mat_id}} -WEIGHT:  {{ingredient.weight}}kg|||</h4>
+        </ng-container>
+        <button (click)="delete(recipe)">delete</button>
+    </div>
+</div>
